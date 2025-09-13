@@ -59,16 +59,16 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $database['main'] = array(
     'driver'	=> 'mysql',
-    'hostname'	=> 'sql.freedb.tech',
+    'hostname'	=> 'sql12.freesqldatabase.com',
     'port'		=> '3306',
-    'username'	=> 'freedb_killua',
-    'password'	=> 'CJR%wf?!4%Ca#hE',
-    'database'	=> 'freedb_my_student_data',
+    'username'	=> 'sql12798455',
+    'password'	=> 'BBZuirn7sC',
+    'database'	=> 'sql12798455',
     'charset'	=> 'utf8mb4',
     'dbprefix'	=> '',
     // Optional for SQLite
     'path'      => ''
-    // Updated for Render.com deployment
+    // Updated for new database
 );
 
 ?>
