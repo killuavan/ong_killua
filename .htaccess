@@ -3,8 +3,11 @@ AddDefaultCharset UTF-8
     RewriteEngine On
 
     # --------------------------------------------------
-    # Allow index.php
+    # Allow index.php and test.php
     <Files "index.php">
+        Require all granted
+    </Files>
+    <Files "test.php">
         Require all granted
     </Files>
 
@@ -23,8 +26,9 @@ AddDefaultCharset UTF-8
     Options -Indexes
 
     # --------------------------------------------------
-    # Route all requests through index.php
+    # Route all requests through index.php (except existing files)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/test\.php$
     RewriteRule ^(.*)$ index.php/$1 [QSA,L]
 </IfModule>
