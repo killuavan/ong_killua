@@ -83,5 +83,26 @@ define('PUBLIC_DIR', $public_folder);
  * Setup done? Then Hurray!
  * ------------------------------------------------------
  */
+
+// Simple check for root URL - bypass framework routing for testing
+$request_uri = $_SERVER['REQUEST_URI'] ?? '';
+$script_name = $_SERVER['SCRIPT_NAME'] ?? '';
+$url = str_replace($script_name, '', $request_uri);
+$url = rtrim($url, '/');
+
+if ($url === '' || $url === '/') {
+    // Direct access to root URL - show simple page
+    echo "<!DOCTYPE html>";
+    echo "<html><head><title>ONG Killua - Working!</title></head>";
+    echo "<body style='font-family: Arial, sans-serif; padding: 20px;'>";
+    echo "<h1>🎉 SUCCESS! Application is working!</h1>";
+    echo "<p>This is the root URL of your ONG Killua application.</p>";
+    echo "<p>Current time: " . date('Y-m-d H:i:s') . "</p>";
+    echo "<p>PHP Version: " . phpversion() . "</p>";
+    echo "<p><a href='/test.php'>Test Page</a> | <a href='/user/create'>Create User</a></p>";
+    echo "</body></html>";
+    exit;
+}
+
 require_once SYSTEM_DIR . 'kernel/LavaLust.php';
 ?>
