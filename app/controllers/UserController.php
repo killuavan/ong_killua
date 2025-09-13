@@ -16,6 +16,11 @@ class UserController extends Controller {
         $data['users'] = $this->UserModel->all();
         $this->call->view('user/view', $data);
     }
+    public function view()
+    {
+        $data['users'] = $this->UserModel->all();
+        $this->call->view('user/view', $data);
+    }
     public function create()
     {
         if($this->io->method() == 'post') {
