@@ -68,6 +68,7 @@ $database['main'] = array(
     'dbprefix'	=> '',
     // Optional for SQLite
     'path'      => ''
+    // Updated for Render.com deployment
 );
 
 ?>
