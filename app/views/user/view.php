@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>ONG Killua - User Management System</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -260,6 +260,112 @@
         min-width: 35px;
       }
     }
+
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .card {
+        margin: 0;
+        border-radius: 15px;
+      }
+      
+      .card-header h2 {
+        font-size: 1.3rem;
+      }
+      
+      .card-header p {
+        font-size: 0.9rem;
+      }
+      
+      .table-responsive {
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      
+      .table th,
+      .table td {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+      
+      .btn {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        margin: 1px;
+      }
+      
+      .btn-violet {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+      }
+      
+      .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .pagination a,
+      .pagination span {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+        min-width: 30px;
+        margin: 2px;
+      }
+      
+      .d-flex.justify-content-end {
+        justify-content: center !important;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 576px) {
+      .card-header h2 {
+        font-size: 1.1rem;
+      }
+      
+      .table th,
+      .table td {
+        padding: 6px 2px;
+        font-size: 0.7rem;
+      }
+      
+      .btn {
+        padding: 3px 6px;
+        font-size: 0.6rem;
+      }
+      
+      .btn-violet {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+      }
+      
+      .pagination a,
+      .pagination span {
+        padding: 4px 6px;
+        font-size: 0.7rem;
+        min-width: 25px;
+      }
+    }
+
+    /* Landscape mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .container {
+        padding: 5px;
+      }
+      
+      .card-header {
+        padding: 10px;
+      }
+      
+      .card-header h2 {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -297,7 +403,8 @@
         $users_data = is_array($users) && isset($users['data']) ? $users['data'] : $users;
         ?>
 
-        <table class="table table-hover table-bordered align-middle text-center mb-4">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle text-center mb-4">
           <thead>
             <tr>
               <th>ID</th>
@@ -322,6 +429,7 @@
             <?php endforeach; ?>
           </tbody>
         </table>
+        </div>
 
         <!-- Pagination -->
         <div class="d-flex justify-content-center">
