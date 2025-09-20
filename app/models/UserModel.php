@@ -14,4 +14,22 @@ class UserModel extends Model {
     {
         parent::__construct();
     }
+    
+    /**
+     * Count total records
+     */
+    public function count()
+    {
+        $result = $this->db->query("SELECT COUNT(*) as total FROM {$this->table}");
+        return $result->row()->total;
+    }
+    
+    /**
+     * Get paginated results
+     */
+    public function paginate($limit, $offset)
+    {
+        $query = "SELECT * FROM {$this->table} LIMIT {$limit} OFFSET {$offset}";
+        return $this->db->query($query)->result();
+    }
 }

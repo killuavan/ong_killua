@@ -279,7 +279,7 @@
         $total_rows = isset($total_users) ? $total_users : (is_array($users) && isset($users['total']) ? $users['total'] : count($users));
         $rows_per_page = 10;
         $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $url = 'user/page';
+        $url = 'user/view';
 
         // Initialize pagination
         $meta = $this->pagination->initialize($total_rows, $rows_per_page, $current_page, $url);

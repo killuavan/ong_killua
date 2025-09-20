@@ -13,12 +13,29 @@ class UserController extends Controller {
     }
     public function index()
     {
-        $data['users'] = $this->UserModel->all();
-        $this->call->view('user/view', $data);
+        $this->view();
     }
+    
     public function view()
     {
-        $data['users'] = $this->UserModel->all();
+        // Get pagination parameters
+        $page = $this->io->get('page') ?: 1;
+        $per_page = 10;
+        
+        // Get total count for pagination
+        $total_users = $this->UserModel->count();
+        
+        // Calculate offset
+        $offset = ($page - 1) * $per_page;
+        
+        // Get paginated users
+        $users = $this->UserModel->paginate($per_page, $offset);
+        
+        $data = [
+            'users' => $users,
+            'total_users' => $total_users
+        ];
+        
         $this->call->view('user/view', $data);
     }
     public function create()
