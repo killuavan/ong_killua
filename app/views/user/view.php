@@ -188,6 +188,55 @@
       margin-bottom: 20px;
     }
     
+    /* Pagination Styles */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin: 20px 0;
+    }
+
+    .pagination a,
+    .pagination span {
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 0 2px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      background: rgba(255, 255, 255, 0.9);
+      color: #667eea;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .pagination a:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .pagination .current {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .pagination .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .pagination .disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
     @media (max-width: 768px) {
       .table thead th,
       .table tbody td {
@@ -202,6 +251,13 @@
       
       .card-header h2 {
         font-size: 1.5rem;
+      }
+
+      .pagination a,
+      .pagination span {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        min-width: 35px;
       }
     }
   </style>
@@ -218,6 +274,20 @@
         <div class="d-flex justify-content-end mb-3">
           <a href="<?= site_url('user/create'); ?>" class="btn btn-violet">Create New User</a>
         </div>
+        <?php
+        // Pagination setup
+        $total_rows = isset($total_users) ? $total_users : (is_array($users) && isset($users['total']) ? $users['total'] : count($users));
+        $rows_per_page = 10;
+        $current_page = $this->io->get('page') ?: 1;
+        $url = 'user/page';
+
+        // Initialize pagination
+        $meta = $this->pagination->initialize($total_rows, $rows_per_page, $current_page, $url);
+        
+        // Handle different data structures
+        $users_data = is_array($users) && isset($users['data']) ? $users['data'] : $users;
+        ?>
+
         <table class="table table-hover table-bordered align-middle text-center mb-4">
           <thead>
             <tr>
@@ -228,7 +298,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach (html_escape($users) as $user): ?>
+            <?php foreach (html_escape($users_data) as $user): ?>
               <tr>
                 <td><?= $user['id']; ?></td>
                 <td><?= $user['username']; ?></td>
@@ -243,6 +313,11 @@
             <?php endforeach; ?>
           </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center">
+          <?= $this->pagination->paginate(); ?>
+        </div>
       </div>
     </div>
   </div>
