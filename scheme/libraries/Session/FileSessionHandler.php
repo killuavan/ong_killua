@@ -69,7 +69,8 @@ class FileSessionHandler extends Session implements SessionHandlerInterface {
             
             // If the path is empty or invalid, use a default path
             if (empty($this->save_path) || !is_dir($this->save_path)) {
-                $this->save_path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'lavalust_sessions';
+                // Use a path relative to the project root
+                $this->save_path = dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'runtime' . DIRECTORY_SEPARATOR . 'sessions';
             }
         }
 
@@ -87,7 +88,7 @@ class FileSessionHandler extends Session implements SessionHandlerInterface {
         
         // Validate and fix the save path if needed
         if (empty($this->save_path) || !is_dir($this->save_path)) {
-            $this->save_path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'lavalust_sessions';
+            $this->save_path = dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'runtime' . DIRECTORY_SEPARATOR . 'sessions';
         }
         
         $this->file_path = $this->save_path.DIRECTORY_SEPARATOR.$session_name . '_';
