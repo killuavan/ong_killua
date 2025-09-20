@@ -20,7 +20,7 @@ class UserController extends Controller {
     {
         // Get pagination parameters
         $page = $this->io->get('page') ?: 1;
-        $per_page = 10;
+        $per_page = 5;
         
         // Get total count for pagination
         $total_users = $this->UserModel->count_all();
