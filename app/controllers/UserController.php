@@ -16,10 +16,10 @@ class UserController extends Controller {
         $this->view();
     }
     
-    public function view()
+    public function view($page = null)
     {
         // Get pagination parameters
-        $page = $this->io->get('page') ?: 1;
+        $page = $page ?: $this->io->get('page') ?: 1;
         $per_page = 5;
         
         // Get total count for pagination
