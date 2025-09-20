@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Create User</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -189,19 +189,120 @@
       margin-bottom: 25px;
     }
     
-    @media (max-width: 576px) {
-      .card-body {
-        padding: 30px 20px;
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: 20px;
+      }
+      
+      .card {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
       
       .card-header {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         padding: 20px;
       }
       
+      .card-body {
+        padding: 25px 20px;
+      }
+      
+      .form-control {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+      }
+      
+      .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+      }
+      
       .btn {
-        padding: 12px 25px;
-        font-size: 0.95rem;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      .d-flex {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .mb-3 {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container {
+        padding: 5px;
+        padding-top: 15px;
+      }
+      
+      .card {
+        border-radius: 12px;
+      }
+      
+      .card-header {
+        font-size: 1.1rem;
+        padding: 15px;
+      }
+      
+      .card-body {
+        padding: 20px 15px;
+      }
+      
+      .form-control {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+      }
+      
+      .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+      }
+      
+      .btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+      }
+      
+      .mb-3 {
+        margin-bottom: 18px;
+      }
+    }
+
+    /* Landscape mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .container {
+        padding: 5px;
+        align-items: center;
+        padding-top: 10px;
+      }
+      
+      .card {
+        max-width: 90%;
+      }
+      
+      .card-header {
+        padding: 15px;
+        font-size: 1.2rem;
+      }
+      
+      .card-body {
+        padding: 20px;
       }
     }
   </style>
