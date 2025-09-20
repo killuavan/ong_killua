@@ -66,6 +66,11 @@ class FileSessionHandler extends Session implements SessionHandlerInterface {
             ini_set('session.save_path', $this->save_path);
         } else {
             $this->save_path = rtrim(ini_get('session.save_path'), '/\\');
+            
+            // If the path is empty or invalid, use a default path
+            if (empty($this->save_path) || !is_dir($this->save_path)) {
+                $this->save_path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'lavalust_sessions';
+            }
         }
 
     }
@@ -79,9 +84,21 @@ class FileSessionHandler extends Session implements SessionHandlerInterface {
      */
     public function open($save_path, $session_name): bool {
         $this->save_path = $save_path;
+        
+        // Validate and fix the save path if needed
+        if (empty($this->save_path) || !is_dir($this->save_path)) {
+            $this->save_path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'lavalust_sessions';
+        }
+        
         $this->file_path = $this->save_path.DIRECTORY_SEPARATOR.$session_name . '_';
+        
         if ( !is_dir($this->save_path) ) {
-            mkdir($this->save_path, 0700, TRUE);
+            if (!mkdir($this->save_path, 0700, TRUE)) {
+                // Fallback to system temp directory if mkdir fails
+                $this->save_path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'lavalust_sessions';
+                $this->file_path = $this->save_path.DIRECTORY_SEPARATOR.$session_name . '_';
+                mkdir($this->save_path, 0700, TRUE);
+            }
         }
         return true;
     }
