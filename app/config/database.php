@@ -59,16 +59,16 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $database['main'] = array(
     'driver'	=> 'mysql',
-    'hostname'	=> 'sql12.freesqldatabase.com',
+    'hostname'	=> 'localhost',
     'port'		=> '3306',
-    'username'	=> 'sql12798455',
-    'password'	=> 'BBZuirn7sC',
-    'database'	=> 'sql12798455',
+    'username'	=> 'root',
+    'password'	=> '',
+    'database'	=> 'ong_killua',
     'charset'	=> 'utf8mb4',
     'dbprefix'	=> '',
     // Optional for SQLite
     'path'      => ''
-    // Updated for new database
+    // Updated for local XAMPP database
 );
 
 ?>
