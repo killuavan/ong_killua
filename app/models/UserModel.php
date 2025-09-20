@@ -18,7 +18,7 @@ class UserModel extends Model {
     /**
      * Count total records
      */
-    public function count()
+    public function count_all()
     {
         $result = $this->db->query("SELECT COUNT(*) as total FROM {$this->table}");
         return $result->row()->total;

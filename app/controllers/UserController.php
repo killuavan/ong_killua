@@ -23,7 +23,7 @@ class UserController extends Controller {
         $per_page = 10;
         
         // Get total count for pagination
-        $total_users = $this->UserModel->count();
+        $total_users = $this->UserModel->count_all();
         
         // Calculate offset
         $offset = ($page - 1) * $per_page;
