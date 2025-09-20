@@ -161,6 +161,10 @@ class Invoker {
 		if (!isset($this->properties['io'])) {
 			$this->properties['io'] =& load_class('io', 'kernel');
 		}
+		// Ensure pagination property is available
+		if (!isset($this->properties['pagination'])) {
+			$this->properties['pagination'] =& load_class('pagination', 'libraries');
+		}
 
 		if(! is_null($data)) {
 			//it will hold the data after looping
@@ -306,6 +310,9 @@ class Invoker {
         // Ensure core properties are available
         if (!isset($this->properties['io'])) {
             $this->properties['io'] =& load_class('io', 'kernel');
+        }
+        if (!isset($this->properties['pagination'])) {
+            $this->properties['pagination'] =& load_class('pagination', 'libraries');
         }
     }
 }
