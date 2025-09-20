@@ -156,6 +156,11 @@ class Invoker {
 				$this->properties[$key] =& $LAVA->$key;
 			}
 		}
+		
+		// Ensure io property is available
+		if (!isset($this->properties['io'])) {
+			$this->properties['io'] =& load_class('io', 'kernel');
+		}
 
 		if(! is_null($data)) {
 			//it will hold the data after looping
@@ -296,6 +301,11 @@ class Invoker {
 		if(count($autoload['configs']) > 0)
         {
             lava_instance()->config->load($autoload['configs']);
+        }
+        
+        // Ensure core properties are available
+        if (!isset($this->properties['io'])) {
+            $this->properties['io'] =& load_class('io', 'kernel');
         }
     }
 }
