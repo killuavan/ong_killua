@@ -280,14 +280,14 @@
         $rows_per_page = 5;
         // Get current page from URL parameter or GET parameter
         $current_page = 1;
-        if (isset($_GET['page'])) {
-            $current_page = (int)$_GET['page'];
-        } elseif (isset($page)) {
+        if (isset($page)) {
             $current_page = (int)$page;
+        } elseif (isset($_GET['page'])) {
+            $current_page = (int)$_GET['page'];
         }
         
         // Debug: Show current page and total users
-        echo "<!-- Debug: Current page: $current_page, Total users: $total_rows -->";
+        echo "<!-- Debug: Current page: $current_page, Total users: $total_rows, Page variable: " . (isset($page) ? $page : 'not set') . " -->";
         $url = 'user/view';
 
         // Initialize pagination
