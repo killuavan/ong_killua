@@ -278,7 +278,16 @@
         // Pagination setup
         $total_rows = isset($total_users) ? $total_users : (is_array($users) && isset($users['total']) ? $users['total'] : count($users));
         $rows_per_page = 5;
-        $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        // Get current page from URL parameter or GET parameter
+        $current_page = 1;
+        if (isset($_GET['page'])) {
+            $current_page = (int)$_GET['page'];
+        } elseif (isset($page)) {
+            $current_page = (int)$page;
+        }
+        
+        // Debug: Show current page and total users
+        echo "<!-- Debug: Current page: $current_page, Total users: $total_rows -->";
         $url = 'user/view';
 
         // Initialize pagination

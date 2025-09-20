@@ -20,6 +20,7 @@ class UserController extends Controller {
     {
         // Get pagination parameters
         $page = $page ?: $this->io->get('page') ?: 1;
+        $page = (int)$page; // Ensure it's an integer
         $per_page = 5;
         
         // Get total count for pagination
@@ -33,7 +34,8 @@ class UserController extends Controller {
         
         $data = [
             'users' => $users,
-            'total_users' => $total_users
+            'total_users' => $total_users,
+            'page' => $page
         ];
         
         $this->call->view('user/view', $data);
