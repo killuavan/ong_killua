@@ -27,7 +27,7 @@ class UserModel extends Model {
     /**
      * Get paginated results
      */
-    public function paginate($limit, $offset)
+    public function get_paginated($limit, $offset)
     {
         $query = "SELECT * FROM {$this->table} LIMIT {$limit} OFFSET {$offset}";
         return $this->db->query($query)->result();

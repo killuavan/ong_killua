@@ -29,7 +29,7 @@ class UserController extends Controller {
         $offset = ($page - 1) * $per_page;
         
         // Get paginated users
-        $users = $this->UserModel->paginate($per_page, $offset);
+        $users = $this->UserModel->get_paginated($per_page, $offset);
         
         $data = [
             'users' => $users,
