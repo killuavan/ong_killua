@@ -264,91 +264,170 @@
     /* Mobile-specific styles */
     @media (max-width: 768px) {
       .container {
-        padding: 10px;
+        padding: 5px;
       }
       
       .card {
         margin: 0;
         border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .card-header {
+        padding: 15px;
+        text-align: center;
       }
       
       .card-header h2 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
       }
       
       .card-header p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+      
+      .card-body {
+        padding: 15px;
       }
       
       .table-responsive {
         border-radius: 10px;
-        overflow: hidden;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid #dee2e6;
+      }
+      
+      .table {
+        margin-bottom: 0;
+        font-size: 0.75rem;
       }
       
       .table th,
       .table td {
-        padding: 8px 4px;
-        font-size: 0.8rem;
+        padding: 8px 6px;
         white-space: nowrap;
+        vertical-align: middle;
+      }
+      
+      .table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
       
       .btn {
         padding: 4px 8px;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         margin: 1px;
+        border-radius: 4px;
       }
       
       .btn-violet {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         padding: 8px 16px;
+        width: 100%;
+        margin-bottom: 10px;
       }
       
       .pagination {
         flex-wrap: wrap;
         justify-content: center;
+        margin-top: 20px;
       }
       
       .pagination a,
       .pagination span {
-        padding: 6px 8px;
-        font-size: 0.8rem;
-        min-width: 30px;
+        padding: 8px 10px;
+        font-size: 0.75rem;
+        min-width: 35px;
         margin: 2px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
       }
       
       .d-flex.justify-content-end {
         justify-content: center !important;
         margin-bottom: 15px;
       }
+      
+      /* Hide some pagination text on very small screens */
+      .pagination .first-link,
+      .pagination .last-link {
+        display: none;
+      }
     }
 
     /* Extra small devices */
     @media (max-width: 576px) {
+      .container {
+        padding: 2px;
+      }
+      
+      .card {
+        border-radius: 10px;
+      }
+      
+      .card-header {
+        padding: 10px;
+      }
+      
       .card-header h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
+      }
+      
+      .card-header p {
+        font-size: 0.7rem;
+      }
+      
+      .card-body {
+        padding: 10px;
       }
       
       .table th,
       .table td {
-        padding: 6px 2px;
-        font-size: 0.7rem;
+        padding: 6px 4px;
+        font-size: 0.65rem;
+      }
+      
+      .table th {
+        font-size: 0.6rem;
       }
       
       .btn {
         padding: 3px 6px;
         font-size: 0.6rem;
+        margin: 0.5px;
       }
       
       .btn-violet {
         font-size: 0.7rem;
         padding: 6px 12px;
+        width: 100%;
       }
       
       .pagination a,
       .pagination span {
-        padding: 4px 6px;
+        padding: 6px 8px;
         font-size: 0.7rem;
-        min-width: 25px;
+        min-width: 30px;
+        margin: 1px;
+      }
+      
+      /* Stack action buttons vertically on very small screens */
+      .table td:last-child {
+        white-space: normal;
+      }
+      
+      .table td:last-child .btn {
+        display: block;
+        width: 100%;
+        margin: 2px 0;
+        text-align: center;
       }
     }
 
@@ -393,7 +472,7 @@
         }
         
         // Debug: Show current page and total users
-        echo "<!-- Debug: Current page: $current_page, Total users: $total_rows, Page variable: " . (isset($page) ? $page : 'not set') . " -->";
+        echo "<!-- Debug: Current page: $current_page, Total users: $total_rows, Page variable: " . (isset($page) ? $page : 'not set') . ", GET page: " . (isset($_GET['page']) ? $_GET['page'] : 'not set') . " -->";
         $url = 'user/view';
 
         // Initialize pagination
