@@ -20,8 +20,9 @@ class UserModel extends Model {
      */
     public function count_all()
     {
-        $result = $this->db->query("SELECT COUNT(*) as total FROM {$this->table}");
-        return $result->row()->total;
+        $result = $this->db->raw("SELECT COUNT(*) as total FROM {$this->table}");
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row['total'];
     }
     
     /**
@@ -29,7 +30,7 @@ class UserModel extends Model {
      */
     public function get_paginated($limit, $offset)
     {
-        $query = "SELECT * FROM {$this->table} LIMIT {$limit} OFFSET {$offset}";
-        return $this->db->query($query)->result();
+        $result = $this->db->raw("SELECT * FROM {$this->table} LIMIT {$limit} OFFSET {$offset}");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 }
