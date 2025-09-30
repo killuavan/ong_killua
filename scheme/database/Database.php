@@ -347,7 +347,16 @@ class Database {
      */
     public function count()
     {
-        return $this->raw("SELECT COUNT(*) AS count FROM {$this->table}" . $this->where)->fetch()['count'];
+        // Respect current WHERE and bound values; do not reset the query state
+        $sql = "SELECT COUNT(*) AS count FROM {$this->table}" . ($this->where ?? '');
+        $this->getSQL = $sql;
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($this->bindValues);
+            return (int) $stmt->fetch()['count'];
+        } catch (Exception $e) {
+            throw new PDOException($e->getMessage() . 'Query: ' . $this->getSQL . '');
+        }
     }
 
     /**

@@ -15,10 +15,15 @@
       box-sizing: border-box;
     }
     
+    :root {
+      --primary-start: #5b7cfa; /* blue */
+      --primary-end:   #7a5cf5; /* violet */
+    }
+    
     body {
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -71,7 +76,7 @@
     }
     
     .card-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
       color: white;
       text-align: center;
       font-size: 1.8rem;
@@ -160,7 +165,7 @@
     }
     
     .btn-violet {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
       color: white;
       box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     }

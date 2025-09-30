@@ -58,14 +58,14 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 
 $database['main'] = array(
-    'driver'	=> 'mysql',
-    'hostname'	=> 'sql12.freesqldatabase.com',
-    'port'		=> '3306',
-    'username'	=> 'sql12799362',
-    'password'	=> 'Nqn22qJZkl',
-    'database'	=> 'sql12799362',
-    'charset'	=> 'utf8mb4',
-    'dbprefix'	=> '',
+    'driver'    => 'mysql',
+    'hostname'  => 'mysql-ad7b180-yunaong47-e418.l.aivencloud.com',
+    'port'      => '12088',
+    'username'  => 'avnadmin',
+    'password'  => 'AWS_-KugYqeITCGdLsgmDGm',   // gamitin yung actual password mo
+    'database'  => 'defaultdb',
+    'charset'   => 'utf8mb4',
+    'dbprefix'  => '',
     // Optional for SQLite
     'path'      => ''
     // Updated for local XAMPP database

@@ -155,7 +155,7 @@ class Session {
 		}
 
 		//Set the users IP Address
-		$_SESSION['ip_address'] = $_SERVER['REMOTE_ADDR'];
+		$_SESSION['ip_address'] = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
 
 	    if ( isset($_COOKIE[$this->config['cookie_name']]) )
 		{
